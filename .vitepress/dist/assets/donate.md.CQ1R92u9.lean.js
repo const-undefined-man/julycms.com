@@ -1,1 +1,0 @@
-import{_ as a,c as e,o as t,a5 as o,a6 as r}from"./chunks/framework.uxiQ4aFj.js";const f=JSON.parse('{"title":"成为 JulyCms 的赞助者​","description":"","frontmatter":{},"headers":[],"relativePath":"donate.md","filePath":"donate.md"}'),s={name:"donate.md"},n=o("",8),_=[n];function c(l,i,d,p,h,m){return t(),e("div",null,_)}const P=a(s,[["render",c]]);export{f as __pageData,P as default};

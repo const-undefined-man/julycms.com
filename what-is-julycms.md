@@ -4,27 +4,18 @@ JulyCms 是一个基于nestjs+typeorm+vue快速搭建web应用程序的开源框
 
 ## 后端架构
 
-底层框架 [Nestjs](https://nestjs.com/), 数据库 [mysql](https://www.mysql.com/), 缓存 [redis](https://redis.io/)，ORM [TypeOrm](https://typeorm.io/)，日志 [winston](https://github.com/winstonjs/winston)。
+底层框架 [Nestjs](https://nestjs.com/), 数据库 [mysql](https://www.mysql.com/), 缓存 [redis](https://redis.io/)，ORM [TypeOrm](https://typeorm.io/)，日志 [winston](https://github.com/winstonjs/winston) 等。
 
-![逻辑](/lj.png)
-
-### 文件结构
+### 主要文件结构
 
 ``` md
-|-- julycms-backend
-    |-- apps                    // 应用
+|-- julycms.com-server/src
+    |-- apis                    // 应用
     |   |-- console             // 管理后台API
     |   |-- july-cms            // www站点API
-    |   |-- weixin-mp           // 微信小程序API
     |-- config                  // 配置
-    |-- libs                    // 资源库
-    |   |-- common              // 公共资源
-    |   |-- modules             // 公共模块
-    |-- logs                    // 日志
-    |-- static                  // 静态资源
-    |-- types                   // 类型声明
-    |-- uploads                 // 附件上传目录
-    |-- views                   // 视图
+    |-- modules                 // 模块
+    |-- main.ts                 // 入口文件
 ```
 
 ### 实现功能

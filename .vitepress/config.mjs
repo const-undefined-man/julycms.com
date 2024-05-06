@@ -27,12 +27,13 @@ export default defineConfig({
       { text: 'JulyCms是什么', link: '/what-is-julycms' },
       { text: '快速开始', link: '/getting-started' },
       { text: '下载', link: '/download' },
+      { text: '部署', link: '/deploy' },
       { text: '反馈', link: '/feedback' },
       { text: '赞助', link: '/donate' }
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/const-undefined-man/julycms.com' }
     ],
 
     footer: {

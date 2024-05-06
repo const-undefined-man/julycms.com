@@ -1,1 +1,0 @@
-import{_ as e,c as a,o,a5 as t}from"./chunks/framework.uxiQ4aFj.js";const u=JSON.parse('{"title":"download","description":"","frontmatter":{},"headers":[],"relativePath":"download.md","filePath":"download.md"}'),r={name:"download.md"},l=t("",7),n=[l];function c(s,d,_,h,i,m){return o(),a("div",null,n)}const f=e(r,[["render",c]]);export{u as __pageData,f as default};

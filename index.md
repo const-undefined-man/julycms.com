@@ -18,7 +18,7 @@ hero:
       link: /getting-started
     - theme: alt
       text: gitee
-      link: https://github.com/july-cms/july-cms
+      link: https://gitee.com/sole/julycms.com
 
 features:
   - icon: 🐱
