@@ -24,7 +24,7 @@
 
 ### 单独启动项目
 
-【具体命令请看`package.json`scripts节点配置的命令，也可以根据自己的情况修改】
+【具体命令请看`package.json`scripts节点配置的命令，也可以根据自己的情况修改】。需要单独启动mysql和redis。
 
 ```sh
 npm run start:dev

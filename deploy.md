@@ -2,7 +2,7 @@
 
 管理后台console-ui有打包好的镜像在hub.docker.com；后端服务有配置的docker-compose.yml，支持docker-compose一键部署。
 
-## 使用docker-compose手动部署
+## 使用docker-compose部署
 
  > 服务器配置就不多废话了，2核2G3M带宽跑得动，阿里云只要99😁
 
@@ -20,6 +20,8 @@
 ### 安装git
 
 安装git的目的是拿到代码，如果不想安装git，也可以通过scp命令吧代码上传到服务器。具体安装过程略过。
+
+如果不想安装git可以通过wget下载 。
 
 ### 启动
 
@@ -44,7 +46,7 @@ julycms.com-server启动的是3000端口，管理后台julycms.com-console-ui用
 
 ### nginx
 
-```bash
+```nginx
  server {
     ...
 
@@ -60,7 +62,6 @@ julycms.com-server启动的是3000端口，管理后台julycms.com-console-ui用
 
     ...
 }
-
 ```
 
 ### apache

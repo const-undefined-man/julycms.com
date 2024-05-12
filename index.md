@@ -5,7 +5,7 @@ layout: home
 hero:
   name: JulyCms
   text: 由NestJs+Vue驱动的快速开发框架
-  tagline: 开发一个后台管理系统只需几分钟
+  tagline: 开发一个前后端分离的网站只需几分钟
   image:
     src: logo.svg
     alt: JulyCms
@@ -16,9 +16,6 @@ hero:
     - theme: alt
       text: 快速开始
       link: /getting-started
-    - theme: alt
-      text: gitee
-      link: https://gitee.com/sole/julycms.com
 
 features:
   - icon: 🐱

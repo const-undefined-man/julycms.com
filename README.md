@@ -25,13 +25,13 @@
 
 - 后端服务 ：[julycms.com-server](https://gitee.com/const-undefined-man/julycms.com-server)
 - 管理后台UI ：[julycms.com-console-ui](https://gitee.com/const-undefined-man/julycms.com-console-ui)
-- PC ：[julycms.com-www-ui](https://gitee.com/const-undefined-man/julycms.com-www-ui)
+- PC ：[julycms.com-pc-ui](https://gitee.com/const-undefined-man/julycms.com-pc-ui)
 
 ### github
 
 - 后端服务 ：[julycms.com-server](https://github.com/const-undefined-man/julycms.com-server)
 - 管理后台UI ：[julycms.com-console-ui](https://github.com/const-undefined-man/julycms.com-console-ui)
-- PC ：[julycms.com-www-ui](https://github.com/const-undefined-man/julycms.com-www-ui)
+- PC ：[julycms.com-pc-ui](https://github.com/const-undefined-man/julycms.com-pc-ui)
 
 ## 在线体验
 
@@ -53,11 +53,15 @@ PC前台：<https://demo.julycms.com>【待完善，持续跟进中】
 
 > 本地需要安装nodejs, nvm, docker & docker-compose
 
-### 后端服务
+### 后端服务 [julycms.com-server]
 
 > nodejs >= v20; 本地用的是v20.10.0。
 
-1. 下载代码：`$ git clone git@github.com:const-undefined-man/julycms.com-server.git` 国内地址请看上面
+1. 下载代码：任选其一
+
+- gitee：`$ git clone git@gitee.com:const-undefined-man/julycms.com-server.git`
+- github：`$ git clone git@github.com:const-undefined-man/julycms.com-server.git`
+
 2. 进入目录：`$ cd julycms.com-server`
 3. 安装依赖：`$ npm install`
 4. 一键启动：`$ docker-compose up -d` 如果想一键启动，可以只下载后端服务代码
@@ -65,14 +69,18 @@ PC前台：<https://demo.julycms.com>【待完善，持续跟进中】
 6. 访问后台：`http://localhost:8080/console`
 7. PC：`http://localhost`
 
-### 管理后台 UI
+### 管理后台 UI [julycms.com-console-ui]
 
 > 管理后台前端因为计划的比较早，采用的nodejs v16.x, vue2.x。这里在安装的时候一定要注意。
 
-1. 下载代码：`$ git clone git@github.com:const-undefined-man/julycms.com-console-ui.git` 国内地址请看上面
+1. 下载代码：：任选其一
+
+- gitee：`$ git clone git@gitee.com:const-undefined-man/julycms.com-console-ui.git`
+- github：`$ git clone git@github.com:const-undefined-man/julycms.com-console-ui.git`
+
 2. 进入目录：`$ cd julycms.com-console-ui`
-3. 安装依赖：`$ npm install`
-4. 切换版本：`$ nvm use 16.13.0` node版本根据自己本地的来。
+3. 切换版本：`$ nvm use 16.13.0` node版本根据自己本地的来。
+4. 安装依赖：`$ npm install`
 5. 项目启动：`$ npm run serve`
 6. 访问地址：`http://localhost:8080`
 
