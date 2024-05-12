@@ -18,20 +18,17 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '下载', link: '/download' },
-			{ text: '反馈', link: '/feedback' },
-			{ text: '赞助', link: '/donate' },
+      { text: '项目部署', link: '/deploy' },
+      { text: '服务器配置', link: '/server-config' },
+			{ text: '反馈/赞助', link: '/feedback' },
     ],
 
     sidebar: [
       { text: 'JulyCms是什么', link: '/what-is-julycms' },
       { text: '快速开始', link: '/getting-started' },
-      { text: '下载', link: '/download' },
-      { text: '部署', link: '/deploy' },
-      { text: '从零开始', link: '/start-from-scratch' },
-      { text: '服务器配置手册', link: '/server-config' },
-      { text: '反馈', link: '/feedback' },
-      { text: '赞助', link: '/donate' }
+      { text: '项目部署', link: '/deploy' },
+      { text: '服务器配置', link: '/server-config' },
+      { text: '反馈/赞助', link: '/feedback' }
     ],
 
     socialLinks: [

@@ -1,58 +1,49 @@
 # JulyCms是什么
 
-JulyCms 是一个基于nestjs+typeorm+vue快速搭建web应用程序的开源框架。
+JulyCms 是一个基于nestjs+typeorm+vue快速搭建web应用程序的开源框架。开发一个前后端分离的网站只需几分钟。
 
-## 后端架构
+## 简介
 
-底层框架 [Nestjs](https://nestjs.com/), 数据库 [mysql](https://www.mysql.com/), 缓存 [redis](https://redis.io/)，ORM [TypeOrm](https://typeorm.io/)，日志 [winston](https://github.com/winstonjs/winston) 等。
+> 项目采用前后端分离，三个项目：后端服务、管理后台UI、PC前台UI。后端服务给管理后台、PC前台提供接口。如果想支持更多端点可以自行扩展。
 
-### 主要文件结构
+- 前端采用Vue、Element UI。
+- 后端采用NestJs、typeorm、Redis & Jwt。
+- 权限认证使用Jwt。
+- 支持加载动态权限菜单，多方式轻松权限控制。
+- swagger文档支持
+- 前后端代码分离，可单独部署。
+- 支持docker compose部署
 
-``` md
-|-- julycms.com-server/src
-    |-- apis                    // 应用
-    |   |-- console             // 管理后台API
-    |   |-- july-cms            // www站点API
-    |-- config                  // 配置
-    |-- modules                 // 模块
-    |-- main.ts                 // 入口文件
-```
-
-### 实现功能
-
-✅ 站点设置     ✅ 模型管理     ✅ 敏感词管理
-
-✅ 栏目管理     ✅ 内容管理     ✅ 标签管理     ✅ 碎片管理     ✅ 附件单管理
-
-✅ 管理员管理   ✅ 角色设置     ✅ 后台菜单     ✅ 字典管理     ✅ 操作日志
-
-## 前端架构
-
-前端使用[Vue全家桶](https://cn.vuejs.org/)框架，UI库[ElementUI](https://element.eleme.cn/#/zh-CN)，axios请求[axios](https://github.com/axios/axios)。
-
-### 后台页面展示
+## 后台页面展示
 
 ![后台](/admin.png)
 
-### 管理后台文件结构
+## 仓库
 
-``` md
-|-- julycms-console/src
-    |-- api                     // 应用
-    |   |-- content             // 内容模块
-    |   |-- system              // 系统管理模块
-    |   |-- common.js           // 公共接口
-    |   |-- index.js            // 入口文件
-    |-- assets                  // 静态资源
-    |-- components              // 自定义组件
-    |   |-- common              // 公共组件
-    |   |-- leyout              // 布局组件
-    |   |-- section             // 模块内组件
-    |   |-- index.js            // 组件入口文件
-    |-- directive               // 指令
-    |-- libs                    // 全局挂载属性 & 三方库挂载
-    |-- mixins                  // 混入文件
-    |-- pages                   // 页面
-    |-- touter                  // 路由
-    |-- store                   // 状态管理
-```
+### gitee
+
+- 后端服务 ：[julycms.com-server](https://gitee.com/const-undefined-man/julycms.com-server)
+- 管理后台UI ：[julycms.com-console-ui](https://gitee.com/const-undefined-man/julycms.com-console-ui)
+- PC ：[julycms.com-pc-ui](https://gitee.com/const-undefined-man/julycms.com-pc-ui)
+
+### github
+
+- 后端服务 ：[julycms.com-server](https://github.com/const-undefined-man/julycms.com-server)
+- 管理后台UI ：[julycms.com-console-ui](https://github.com/const-undefined-man/julycms.com-console-ui)
+- PC ：[julycms.com-pc-ui](https://github.com/const-undefined-man/julycms.com-pc-ui)
+
+## 在线体验
+
+PC前台：<https://demo.julycms.com>【待完善，持续跟进中】
+
+管理后台: <https://demo.julycms.com/console>
+
+账号密码：julycms/julycms
+
+## 内置功能
+
+✅ 站点设置 ✅ 模型管理 ✅ 敏感词管理
+
+✅ 栏目管理 ✅ 内容管理 ✅ 标签管理 ✅ 碎片管理 ✅ 附件单管理
+
+✅ 管理员管理 ✅ 角色设置 ✅ 后台菜单 ✅ 字典管理 ✅ 操作日志

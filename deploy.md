@@ -1,50 +1,162 @@
 # 部署
 
-管理后台console-ui有打包好的镜像在hub.docker.com；后端服务有配置的docker-compose.yml，支持docker-compose一键部署。
+这章将模拟一个完成的网站开发场景，快速帮助熟悉julycms。如果你是老选手，可以直接使用docker compose 一键部署。
 
-## 使用docker-compose部署
+现在接了一个私活，需要开发一个网站，需要一个PC端，管理后台，后端接口服务，那么使用julycms有两种方式：
 
- > 服务器配置就不多废话了，2核2G3M带宽跑得动，阿里云只要99😁
+1. 直接使用julycms的docker compose一键部署
+2. 定制开发后，自行部署上线
 
-### 安装docker
+## 直接使用julycms的docker compose一键部署
 
-> 各个服务商都有文档，这里就不多说了,可以自行取官网查找文档
+> 一键部署适合简单的，不需要定制开发的场景。且部署步骤都是按照Rocky linux系统来的。
 
-[阿里云](https://help.aliyun.com/zh/ecs/use-cases/deploy-and-use-docker-on-alibaba-cloud-linux-2-instances?spm=5176.21213303.J_qCOwPWspKEuWcmp8qiZNQ.21.3f8e2f3dtTC3Bf&scm=20140722.S_help@@%E6%96%87%E6%A1%A3@@51853._.ID_help@@%E6%96%87%E6%A1%A3@@51853-RL_centos7%E5%AE%89%E8%A3%85docker-LOC_llm-OR_ser-V_3-RE_new3-P0_0)、
-[腾讯云](https://cloud.tencent.com/document/product/1207/45596)、
-[华为云](https://support.huaweicloud.com/bestpractice-ecs/zh-cn_topic_0141067581.html)、
-[百度云](https://cloud.baidu.com/doc/BCC/s/nkg8s52bt)、
-[京东云](https://docs.jdcloud.com/cn/iavm/mdocker)、
-[AWS](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/install-docker.html)
+### 下载
 
-### 安装git
+这里默认认为服务器已经安装了git。
 
-安装git的目的是拿到代码，如果不想安装git，也可以通过scp命令吧代码上传到服务器。具体安装过程略过。
+```sh
+  # gitee
+  git clone https://gitee.com/const-undefined-man/julycms.com
 
-如果不想安装git可以通过wget下载 。
+  # github
+  git clone https://github.com/const-undefined-man/julycms.com
+```
+
+如果没有安装git，也可以使用wget直接下载zip包，然后解压
+
+```sh
+  # gitee
+  wget https://gitee.com/const-undefined-man/julycms.com-server/repository/archive/master.zip
+
+  # github
+  wget https://github.com/const-undefined-man/julycms.com-server/archive/refs/heads/master.zip
+
+  # 解压
+  unzip master.zip
+```
+
+### 创建Dockerfile
+
+> 项目已经创建好了，如果需要变更，请自行修改
+
+```dockerfile
+ARG NODE_VERSION=20.10.0
+
+# build satge
+FROM node:${NODE_VERSION}-alpine as build-stage
+
+WORKDIR /app
+
+COPY package.json .
+COPY package-lock.json .
+
+RUN npm config set registry https://registry.npmmirror.com/
+
+RUN npm ci
+
+COPY . .
+
+RUN npm run build
+
+# production stage
+FROM node:${NODE_VERSION}-alpine as production-stage
+
+COPY --from=build-stage /app/dist /app
+COPY --from=build-stage /app/package.json /app/package.json
+COPY --from=build-stage /app/package-lock.json /app/package-lock.json
+
+WORKDIR /app
+
+RUN npm install --omit=dev
+
+RUN npm install pm2 -g
+
+EXPOSE 3000
+
+CMD ["pm2-runtime", "/app/main.js"]
+```
+
+### 创建docker-compose.yml
+
+> 项目已经创建好了，如果需要变更，请自行修改
+
+```yaml
+version: '3.8'
+services:
+  console-ui:
+    image: 20230709/julycms-console-ui:1.0.0
+    ports:
+      - 82:80
+    depends_on:
+      - api-server
+    networks:
+      - julycms-network
+  api-server:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    ports:
+      - '3000:3000'
+    environment:
+      NODE_ENV: 'prod'
+    depends_on:
+      - mysql-server
+      - redis-server
+    networks:
+      - julycms-network
+  mysql-server:
+    image: mysql
+    ports:
+      - 3306:3306
+    volumes:
+      - /Users/sole/docker/mysql:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=julyCms
+      - MYSQL_ROOT_PASSWORD=123123123
+    networks:
+      - julycms-network
+  redis-server:
+    image: redis:alpine3.19
+    volumes:
+      - /Users/sole/docker/redis:/data
+    networks:
+      - julycms-network
+networks:
+  julycms-network:
+    driver: bridge
+```
+
+:::info
+注意：docker-compose.yml中的services节点没有PC的服务，后续更新后，会维护进去。如果你已经迫不及待了，可以自行添加，示例代码如下：
+:::
+
+```yaml
+version: '3.8'
+services:
+  pc-ui:
+    image: 这里填写自己的镜像地址
+    ports:
+      - 81:80
+    depends_on:
+      - api-server
+    networks:
+      - julycms-network
+```
 
 ### 启动
 
-```bash
-# 需要换成自己的仓库地址
-git clone git@github.com:const-undefined-man/julycms.com-server.git
-
+```sh
 # 进入目录
 cd julycms.com-server
-
-# docker启动
+# 如果启动失败，可以多次尝试
 docker-compose up -d
+# 查看启动的镜像
+docker ps
+# 如果PC端、管理后台、服务端、mysql、redis都启动了，那么恭喜你，你已经部署成功了！🎉🎉🎉
 ```
 
-## 其他部署方式
-
-待更新！需要可持续集成部署的小伙伴可以[反馈](/feedback)
-
-## 关于多个服务的说明
-
-julycms.com-server启动的是3000端口，管理后台julycms.com-console-ui用的是80端口，PC前台用的也是80端口，这里需要一个中间服务做代理。以下是各种服务器的配置。
-
-### nginx
+### nginx 配置
 
 ```nginx
  server {
@@ -64,20 +176,59 @@ julycms.com-server启动的是3000端口，管理后台julycms.com-console-ui用
 }
 ```
 
-### apache
+### 访问
 
-```bash
-<VirtualHost *:80>
-    ServerName julycms.com
+此时你已经可以访问了，地址如下：
 
-    # 代理PC前台
-    ProxyPass / http://localhost:81/
-    ProxyPassReverse / http://localhost:81/
+- PC端：<http://julycms.com>
+- 管理后台：<http://julycms.com/console-ui>
 
-    # 代理管理后台
-    ProxyPass /console-ui http://localhost:82/
-    ProxyPassReverse /console-ui http://localhost:82/
+## 定制开发后，自行部署上线
 
-    ...
-</VirtualHost>
+### 下载
+
+1. 下载PC端代码 [gitee](https://gitee.com/const-undefined-man/julycms.com-pc-ui) | [github](https://github.com/const-undefined-man/julycms.com-pc-ui)
+2. 下载管理后台代码 [gitee](https://gitee.com/const-undefined-man/julycms.com-console-ui) | [github](https://github.com/const-undefined-man/julycms.com-console-ui)
+3. 下载后端服务代码 [gitee](https://gitee.com/const-undefined-man/julycms.com-server) | [github](https://github.com/const-undefined-man/julycms.com-server)
+
+### 本地开发
+
+本地开发省略....
+
+### 打包镜像，并发布到指定服务器
+
+系统默认的镜像是发布到`hub.docker.com`官网的，可以自己发布到自己的镜像仓库，现在云上有免费的镜像仓库
+
+这里演示如何打包镜像到官网，记得本地启动docker服务
+
+```sh
+# 进入目录
+cd julycms.com-pc-ui
+# 打包镜像
+docker build -t 你的账号/julycms-pc-ui:1.0.0 .
+# 登录到docker官网
+docker login
+# 发布镜像
+docker push 你的账号/julycms-pc-ui:1.0.0
+```
+
+### 部署
+
+如果服务器有git，你可以吧你的代码提交到git仓库，然后服务器上拉取代码，进入到目录，然后执行`docker-compose up -d`即可。
+
+如果没有安装git，可以使用scp 或者 wget 等方式，总是办法很多，在服务器开启ftp服务也可以的。
+
+scp 示例命令：
+
+```sh
+# 上传代码
+scp -P 2222 julycms.com-server.zip root@服务器ip:/root/julycms.com-server
+# 登录服务器
+ssh root@服务器ip
+# 解压
+unzip julycms.com-server.zip
+# 进入目录
+cd /julycms.com-server
+# 启动
+docker-compose up -d
 ```
