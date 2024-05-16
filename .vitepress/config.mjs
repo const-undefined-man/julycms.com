@@ -31,6 +31,11 @@ export default defineConfig({
       { text: '反馈/赞助', link: '/feedback' }
     ],
 
+    outline: {
+      label: '内容导航',
+      level: 'deep'
+    },
+
     socialLinks: [
       { icon: 'github', link: 'https://github.com/const-undefined-man/julycms.com' },
       { icon: {

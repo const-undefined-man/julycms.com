@@ -150,7 +150,7 @@ services:
 # 进入目录
 cd julycms.com-server
 # 如果启动失败，可以多次尝试
-docker-compose up -d
+docker compose up -d
 # 查看启动的镜像
 docker ps
 # 如果PC端、管理后台、服务端、mysql、redis都启动了，那么恭喜你，你已经部署成功了！🎉🎉🎉
@@ -230,5 +230,5 @@ unzip julycms.com-server.zip
 # 进入目录
 cd /julycms.com-server
 # 启动
-docker-compose up -d
+docker compose up -d
 ```
