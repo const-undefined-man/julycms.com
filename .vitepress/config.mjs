@@ -21,6 +21,11 @@ export default defineConfig({
       { text: '项目部署', link: '/deploy' },
       { text: '服务器配置', link: '/server-config' },
 			{ text: '反馈/赞助', link: '/feedback' },
+      { text: '演示站点', items: [
+          { text: '网站前台', link: 'https://demo.julycms.com' },
+          { text: '管理后台', link: 'https://demo.julycms.com/console-ui' }
+        ]
+      }
     ],
 
     sidebar: [

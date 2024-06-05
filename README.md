@@ -38,7 +38,7 @@
 
 PC前台：<https://demo.julycms.com>
 
-管理后台: <https://demo.julycms.com/console>
+管理后台: <https://demo.julycms.com/console-ui>
 
 账号密码：julycms/julycms
 
