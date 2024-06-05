@@ -1,9 +1,9 @@
 <p align="center">
   <a href="//www.julycms.com" target="blank"><img src="https://julycms.com/logo.svg" width="100" alt="julycms Logo" /></a>
 </p>
-<p align="center">JulyCms v1.0.0</p>
+<p align="center">JulyCms v1.0.0 | julycms.com-console-ui v1.0.0 ｜ julycms.com-pc-ui v1.0.0</p>
 
-<p align="center">一个基于<a href="https://nestjs.com/" target="_blank">nestjs</a>+<a href="https://typeorm.io/" target="_blank">typeorm</a>+<a href="https://v2.cn.vuejs.org/" target="_blank">vue2.x</a>快速搭建web应用程序的开源框架。</p>
+<p align="center">一个基于[<a href="https://nestjs.com/" target="_blank">nestjs</a>+<a href="https://typeorm.io/" target="_blank">typeorm</a>]+[<a href="https://v2.cn.vuejs.org/" target="_blank">vue v2.x</a>+ElementUI 2.x]+[<a href="https://nuxt.com" target="_blank">nuxt v3.11</a>]的快速搭建web应用程序的开源框架。</p>
 
 ![预览](https://julycms.com/admin.png)
 
@@ -11,7 +11,8 @@
 
 > 项目采用前后端分离，三个项目：后端服务、管理后台UI、PC前台UI。后端服务给管理后台、PC前台提供接口。如果想支持更多端点可以自行扩展。
 
-- 前端采用Vue、Element UI。
+- PC端采用nuxt 3.11、nuxtUI、tailwindcss。
+- 管理后台采用Vue、Element UI。
 - 后端采用NestJs、typeorm、Redis & Jwt。
 - 权限认证使用Jwt。
 - 支持加载动态权限菜单，多方式轻松权限控制。
@@ -35,7 +36,7 @@
 
 ## 在线体验
 
-PC前台：<https://demo.julycms.com>【待完善，持续跟进中】
+PC前台：<https://demo.julycms.com>
 
 管理后台: <https://demo.julycms.com/console>
 
@@ -86,7 +87,14 @@ PC前台：<https://demo.julycms.com>【待完善，持续跟进中】
 
 ### PC前台UI项目
 
-> 待完善，持续跟进中。计划采用nuxtJs。
+- gitee：`$ git clone git@gitee.com:const-undefined-man/julycms.com-pc-ui.git`
+- github：`$ git clone git@github.com:const-undefined-man/julycms.com-pc-ui.git`
+
+2. 进入目录：`$ cd julycms.com-pc-ui`
+3. 切换版本：`$ nvm use 20.13.0`
+4. 安装依赖：`$ npm install`
+5. 项目启动：`$ npm run dev`
+6. 访问地址：`http://localhost:3000`
 
 ## 扩展端点API
 

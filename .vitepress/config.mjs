@@ -28,7 +28,8 @@ export default defineConfig({
       { text: '快速开始', link: '/getting-started' },
       { text: '项目部署', link: '/deploy' },
       { text: '服务器配置', link: '/server-config' },
-      { text: '反馈/赞助', link: '/feedback' }
+      { text: '反馈/赞助', link: '/feedback' },
+      { text: '常见问题', link: '/faq' },
     ],
 
     outline: {
