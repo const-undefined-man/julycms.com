@@ -8,6 +8,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     ['meta', { name: 'keywords', content: 'Julycms,七月CMS,nodeCMS,nestCMS,node管理后台,nestjs管理后台' }],
+    ['script', { src: 'https://hm.baidu.com/hm.js?7ef2f95386fffdbd6de81dd595834f2d' }],
   ],
   themeConfig: {
     logo: "/logo.svg",
