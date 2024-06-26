@@ -36,7 +36,7 @@ JulyCms 是一个基于nestjs+typeorm+vue快速搭建web应用程序的开源框
 
 PC前台：<https://demo.julycms.com>【待完善，持续跟进中】
 
-管理后台: <https://demo.julycms.com/console>
+管理后台: <https://demo.julycms.com/console-ui>
 
 账号密码：julycms/julycms
 

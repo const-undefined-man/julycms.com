@@ -47,7 +47,7 @@ git clone git@github.com:const-undefined-man/julycms.com-server.git
 3. 安装依赖：`$ npm install`
 4. 本地启动：`$ npm run start:dev`
 5. 访问文档：`http://localhost:3000/api-doc`
-6. 访问后台：`http://localhost:8080/console`
+6. 访问后台：`http://localhost:8080/console-ui/`
 
 ### 错误处理
 
