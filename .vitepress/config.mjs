@@ -2,9 +2,9 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "JulyCms-七月C内容管理系统",
-  titleTemplate: '由NestJs+Vue驱动的快速开发框架',
-  description: "由NestJs+Vue驱动的快速开发框架",
+  title: "JulyCms",
+  titleTemplate: '-七月内容管理系统,由NestJs+Vue驱动的快速开发框架',
+  description: "七月内容管理系统,由NestJs+Vue驱动的快速开发框架",
   head: [
     ['link', { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
     ['meta', { name: 'keywords', content: 'Julycms,七月CMS,内容管理系统,nodeCMS,nestCMS,node管理后台,nestjs管理后台' }],
